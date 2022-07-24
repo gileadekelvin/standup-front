@@ -1,6 +1,7 @@
 import { useFragment } from 'react-relay';
+import { Typography } from '@mui/joy';
 
-import { DailyFragment$key } from '../../__generated__/DailyFragment.graphql';
+import { DailyFragment$key } from '../../../__generated__/DailyFragment.graphql';
 import { dailyFrag } from './Daily.gql';
 
 type DailyProps = {
@@ -10,7 +11,7 @@ type DailyProps = {
 const Daily = (props: DailyProps) => {
   const daily = useFragment(dailyFrag, props.data);
 
-  return <p>{daily.updatedAt}</p>;
+  return <Typography>{daily.updatedAt}</Typography>;
 };
 
 export default Daily;
