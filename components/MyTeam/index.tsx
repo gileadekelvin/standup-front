@@ -7,7 +7,6 @@ import {
 
 import { MyTeamQuery } from '../../__generated__/MyTeamQuery.graphql';
 import Daily from '../Daily';
-
 import { myTeamQuery } from './MyTeam.gql';
 
 type DailyListProps = {
