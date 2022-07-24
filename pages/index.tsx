@@ -1,17 +1,16 @@
-import type { NextPage } from 'next';
+import type { NextPageWithLayout } from './_app';
 
-import MyTeam from '../components/MyTeam';
-import styles from '../styles/Home.module.css';
+import { ReactElement } from 'react';
 
-const Home: NextPage = () => {
-  return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
-      <MyTeam />
-    </div>
-  );
+import Layout from '../src/components/Layout';
+import MyTeam from '../src/components/MyTeam';
+
+const Home: NextPageWithLayout = () => {
+  return <MyTeam />;
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Home;
