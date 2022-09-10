@@ -1,0 +1,11 @@
+{
+  "sidebar": {
+    "browse": "Browse",
+    "myTeam": "My Team"
+  },
+  "daily": {
+    "yesterday": "Yesterday",
+    "today": "Today",
+    "blocks": "Blocks"
+  }
+}

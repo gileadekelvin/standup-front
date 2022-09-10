@@ -6,8 +6,11 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import ListItemContent from '@mui/joy/ListItemContent';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import { useTranslation } from 'next-i18next';
 
 const Sidebar = () => {
+  const { t } = useTranslation('common');
+
   return (
     <List size='sm' sx={{ '--List-item-radius': '8px' }}>
       <ListItem nested sx={{ p: 0 }}>
@@ -29,7 +32,7 @@ const Sidebar = () => {
               letterSpacing: '.1rem',
             }}
           >
-            Browse
+            {t('sidebar.browse')}
           </Typography>
         </Box>
         <List aria-labelledby='nav-list-browse'>
@@ -38,7 +41,7 @@ const Sidebar = () => {
               <ListItemDecorator sx={{ color: 'inherit' }}>
                 <FolderOpenIcon fontSize='small' />
               </ListItemDecorator>
-              <ListItemContent>My Team</ListItemContent>
+              <ListItemContent>{t('sidebar.myTeam')}</ListItemContent>
             </ListItemButton>
           </ListItem>
         </List>

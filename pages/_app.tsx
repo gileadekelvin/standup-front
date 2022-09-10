@@ -2,6 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 
+import { appWithTranslation } from 'next-i18next';
 import { CssVarsProvider } from '@mui/joy/styles';
 import { Suspense } from 'react';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
@@ -30,4 +31,4 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
