@@ -5,6 +5,7 @@ import IconButton from '@mui/joy/IconButton';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import { format } from 'date-fns';
 import { useFragment } from 'react-relay';
+import { useTranslation } from 'next-i18next';
 
 import AvatarUser from '../ui/AvatarUser';
 import TaskList from '../ui/TaskList';
@@ -19,6 +20,8 @@ const Daily = (props: DailyProps) => {
   const daily = useFragment(dailyFrag, props.data);
 
   const joyTheme = useTheme();
+
+  const { t } = useTranslation('common');
 
   return (
     <Card
@@ -38,17 +41,17 @@ const Daily = (props: DailyProps) => {
         {format(new Date(daily.createdAt), 'dd/MM/yyyy')}
       </Typography>
       <TaskList
-        title='Yesterday'
+        title={t('daily.yesterday')}
         color={joyTheme.vars.palette.info.plainHoverBg}
         tasks={daily.yesterday}
       />
       <TaskList
-        title='Today'
+        title={t('daily.today')}
         color={joyTheme.vars.palette.warning.plainHoverBg}
         tasks={daily.today}
       />
       <TaskList
-        title='Blocks'
+        title={t('daily.blocks')}
         color={joyTheme.vars.palette.danger.plainHoverBg}
         tasks={daily.blocks}
       />
