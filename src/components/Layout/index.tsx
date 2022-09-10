@@ -16,11 +16,7 @@ const DefaultLayout: React.FC<PropsWithChildren> = ({ children }) => {
       )}
       <Layout.Root
         sx={{
-          gridTemplateColumns: {
-            xs: '1fr',
-            sm: 'minmax(64px, 200px) minmax(450px, 1fr)',
-            md: 'minmax(160px, 300px) minmax(600px, 1fr) minmax(300px, 420px)',
-          },
+          minHeight: 'calc(100vh - 72px)',
           ...(drawerOpen && {
             height: '100vh',
             overflow: 'hidden',
@@ -34,15 +30,7 @@ const DefaultLayout: React.FC<PropsWithChildren> = ({ children }) => {
           <Sidebar />
         </Layout.SideNav>
         <Layout.Main>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: 2,
-            }}
-          >
-            {children}
-          </Box>
+          <Box>{children}</Box>
         </Layout.Main>
       </Layout.Root>
     </>

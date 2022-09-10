@@ -6,14 +6,7 @@ const Root = (props: BoxProps) => (
     {...props}
     sx={[
       {
-        bgcolor: 'background.appBody',
-        display: 'grid',
-        gridTemplateColumns: {
-          xs: '1fr',
-          sm: 'minmax(64px, 200px) minmax(450px, 1fr)',
-          md: 'minmax(160px, 300px) minmax(300px, 500px) minmax(500px, 1fr)',
-        },
-        gridTemplateRows: '64px 1fr',
+        bgcolor: 'background.body',
         minHeight: '100vh',
       },
       ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
@@ -30,7 +23,7 @@ const Header = (props: BoxProps) => (
       {
         p: 2,
         gap: 2,
-        bgcolor: 'background.componentBg',
+        bgcolor: 'background.body',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -38,7 +31,8 @@ const Header = (props: BoxProps) => (
         gridColumn: '1 / -1',
         borderBottom: '1px solid',
         borderColor: 'divider',
-        position: 'sticky',
+        position: 'fixed',
+        minWidth: 'calc(100% - 48px)',
         top: 0,
         zIndex: 1100,
       },
@@ -55,7 +49,12 @@ const SideNav = (props: BoxProps) => (
     sx={[
       {
         p: 2,
-        bgcolor: 'background.componentBg',
+        marginTop: '64px',
+        position: 'fixed',
+        top: 0,
+        bottom: 0,
+        minWidth: '240px',
+        bgcolor: 'background.body',
         borderRight: '1px solid',
         borderColor: 'divider',
         display: {
@@ -74,9 +73,9 @@ const SidePane = (props: BoxProps) => (
     {...props}
     sx={[
       {
-        bgcolor: 'background.componentBg',
+        bgcolor: 'background.body',
         borderRight: '1px solid',
-        borderColor: 'divider',
+        borderColor: 'divider', 
         display: {
           xs: 'none',
           md: 'initial',
@@ -92,7 +91,16 @@ const Main = (props: BoxProps) => (
     component='main'
     className='Main'
     {...props}
-    sx={[{ p: 2 }, ...(Array.isArray(props.sx) ? props.sx : [props.sx])]}
+    sx={[
+      {
+        py: 1,
+        marginTop: '64px',
+        marginLeft: {
+          sm: '280px',
+        },
+      },
+      ...(Array.isArray(props.sx) ? props.sx : [props.sx]),
+    ]}
   />
 );
 
@@ -123,7 +131,7 @@ const SideDrawer = ({
         height: '100%',
         p: 2,
         boxShadow: 'lg',
-        bgcolor: 'background.componentBg',
+        bgcolor: 'background.body',
       }}
     >
       {props.children}
