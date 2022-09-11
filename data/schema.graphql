@@ -1,0 +1,175 @@
+"""Author of daily register"""
+type Author {
+  name: String!
+  userId: String!
+}
+
+"""Create daily input fields"""
+input CreateDailyInput {
+  blocks: [TaskInput!]
+  today: [TaskInput!]
+  yesterday: [TaskInput!]
+}
+
+"""Create daily payload"""
+type CreateDailyPayload {
+  Daily: Daily
+  Error: [String!]
+}
+
+"""Daily register"""
+type Daily implements Node {
+  _id: ID!
+  author: Author!
+  authorInfo: User
+  blocks: [Task]
+  createdAt: DateTime!
+  id: ID!
+  teamId: String!
+  today: [Task]
+  updatedAt: DateTime!
+  yesterday: [Task]
+}
+
+"""Daily Connection"""
+type DailyConnection {
+  edges: [DailyEdge]
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+
+"""Daily Edge"""
+type DailyEdge {
+  cursor: String!
+  node: Daily
+}
+
+"""DateTime scalar"""
+scalar DateTime
+
+"""Delete daily input fields"""
+input DeleteDailyInput {
+  id: ID!
+}
+
+"""Create daily payload"""
+type DeleteDailyPayload {
+  Daily: Daily
+  Error: [String!]
+}
+
+"""Login response"""
+type LoginPayload {
+  Error: [String!]
+  token: String
+}
+
+"""Mutation type"""
+type Mutation {
+  createDaily(input: CreateDailyInput!): CreateDailyPayload
+  deleteDaily(input: DeleteDailyInput!): DeleteDailyPayload
+  login(token: String!): LoginPayload
+  test(input: String): String
+  updateDaily(input: UpdateDailyInput!): UpdateDailyPayload
+}
+
+"""Node interface"""
+interface Node {
+  id: ID!
+}
+
+"""PageInfo"""
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+"""Query type"""
+type Query {
+  me: User
+  node(id: ID!): Node
+}
+
+"""Role types"""
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+"""Role level types"""
+enum RoleLevel {
+  ORGANIZATION
+  TEAM
+}
+
+"""Task from a daily"""
+type Task {
+  status: TaskStatus
+  text: String!
+}
+
+"""Task input fields"""
+input TaskInput {
+  status: TaskStatusInput
+  text: String!
+}
+
+"""Task status"""
+type TaskStatus {
+  done: Boolean
+  updatedAt: DateTime
+}
+
+"""Task status input fields"""
+input TaskStatusInput {
+  done: Boolean
+  updatedAt: DateTime
+}
+
+"""Team"""
+type Team implements Node {
+  _id: ID!
+  companyId: String
+  createdAt: DateTime!
+  dailies(after: String, first: Int!): DailyConnection
+  id: ID!
+  name: String!
+  updatedAt: DateTime!
+}
+
+"""Update daily input fields"""
+input UpdateDailyInput {
+  blocks: [TaskInput!]
+  id: ID!
+  today: [TaskInput!]
+  yesterday: [TaskInput!]
+}
+
+"""Update daily payload"""
+type UpdateDailyPayload {
+  Daily: Daily
+  Error: [String!]
+}
+
+"""User"""
+type User implements Node {
+  _id: ID!
+  bio: String
+  createdAt: DateTime!
+  email: String!
+  id: ID!
+  name: String!
+  role: UserRole!
+  team: Team
+  teamId: String!
+  updatedAt: DateTime!
+  verified: Boolean
+}
+
+"""User Role"""
+type UserRole {
+  level: RoleLevel!
+  name: Role!
+}

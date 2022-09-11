@@ -38,4 +38,3 @@ yarn-error.log*
 # relay
 __generated__/**
 !__generated__/.gitkeep
-data/schema.graphql
