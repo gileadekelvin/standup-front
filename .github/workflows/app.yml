@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+env: 
+  API_SECRET: ${{ secrets.API_SECRET }}
+
+jobs:
+  build:
+    name: Test and Build
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install dependencies
+        run: yarn
+      - name: Compile relay
+        run: yarn relay
+      - name: Run lint
+        run: yarn lint
+      - name: Run tests
+        run: yarn test
+      - name: Run build
+        run: yarn build
