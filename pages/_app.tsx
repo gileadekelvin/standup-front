@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 
 import { appWithTranslation } from 'next-i18next';
 import { CssVarsProvider } from '@mui/joy/styles';
+import { CircularProgress } from '@mui/material';
 import { Suspense } from 'react';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 
@@ -25,7 +26,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <RelayEnvironmentProvider environment={relayEnvironment}>
       <CssVarsProvider theme={theme}>
-        <Suspense fallback={'Loading...'}>{getLayout(<Component {...pageProps} />)}</Suspense>
+        <Suspense fallback={<CircularProgress />}>
+          {getLayout(<Component {...pageProps} />)}
+        </Suspense>
       </CssVarsProvider>
     </RelayEnvironmentProvider>
   );
