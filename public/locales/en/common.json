@@ -1,4 +1,7 @@
 {
+  "cancel": "Cancel",
+  "save": "Save",
+  "add": "Add",
   "sidebar": {
     "browse": "Browse",
     "myTeam": "My Team"
@@ -6,6 +9,9 @@
   "daily": {
     "yesterday": "Yesterday",
     "today": "Today",
-    "blocks": "Blocks"
+    "blocks": "Blocks",
+    "create": {
+      "title": "create daily"
+    }
   }
 }

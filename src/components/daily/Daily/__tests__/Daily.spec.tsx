@@ -4,8 +4,8 @@ import { createMockEnvironment, MockPayloadGenerator, MockEnvironment } from 're
 import '@testing-library/jest-dom';
 
 import Daily from '..';
-import { DailyTestQuery } from '../../../../__generated__/DailyTestQuery.graphql';
-import { withRelayProvider } from '../../../tests/relay';
+import { DailyTestQuery } from '../../../../../__generated__/DailyTestQuery.graphql';
+import { withRelayProvider } from '../../../../tests/relay';
 
 describe('Test Daily component', () => {
   let environment: MockEnvironment;
