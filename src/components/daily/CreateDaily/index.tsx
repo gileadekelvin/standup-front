@@ -1,15 +1,23 @@
 import { useTranslation } from 'next-i18next';
-import { ModalProps } from '@mui/material';
 import { useState } from 'react';
+import { useMutation } from 'react-relay';
+import { ModalProps } from '@mui/material';
 import { Button } from '@mui/joy';
 import AddIcon from '@mui/icons-material/Add';
 
+import {
+  CreateDailyMutation,
+  CreateDailyInput,
+} from '../../../../__generated__/CreateDailyMutation.graphql';
 import DailyInputDialog from '../DailyInputDialog';
+import { createDailyMutation } from './CreateDaily.gql';
 
 const CreateDaily = () => {
   const [open, setOpen] = useState(false);
 
   const { t } = useTranslation('common');
+
+  const [commitMutation] = useMutation<CreateDailyMutation>(createDailyMutation);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,6 +32,14 @@ const CreateDaily = () => {
     setOpen(false);
   };
 
+  const handleSave = (input: CreateDailyInput) => {
+    commitMutation({
+      variables: {
+        input,
+      },
+    });
+  };
+
   return (
     <>
       <Button
@@ -35,7 +51,12 @@ const CreateDaily = () => {
       >
         {t('daily.create.title')}
       </Button>
-      <DailyInputDialog open={open} handleClose={handleClose} handleCancel={handleCancel} />
+      <DailyInputDialog
+        open={open}
+        handleClose={handleClose}
+        handleCancel={handleCancel}
+        handleSave={handleSave}
+      />
     </>
   );
 };

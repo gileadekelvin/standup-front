@@ -1,18 +1,18 @@
 import { useTheme, Button } from '@mui/joy';
 import { useTranslation } from 'next-i18next';
 import { Stack, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-import { useForm, useFieldArray, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 import TaskInput from './TaskInput';
 import { DailyInputDialogProps, FormValues } from './DailyInputDialog';
 
 const DailyInputDialog = (props: DailyInputDialogProps) => {
-  const { handleClose, handleCancel, open } = props;
+  const { open, handleClose, handleCancel, handleSave } = props;
 
   const joyTheme = useTheme();
   const { t } = useTranslation('common');
 
-  const { control, handleSubmit } = useForm<FormValues>({
+  const { control, handleSubmit, reset } = useForm<FormValues>({
     defaultValues: {
       yesterday: [{ text: '' }],
       today: [{ text: '' }],
@@ -20,27 +20,27 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
     },
   });
 
-  const { fields: fieldsYesterday, append: appendYesterday } = useFieldArray({
-    control,
-    name: 'yesterday',
-  });
-  const { fields: fieldsToday, append: appendToday } = useFieldArray({
-    control,
-    name: 'today',
-  });
-  const { fields: fieldsBlocks, append: appendBlocks } = useFieldArray({
-    control,
-    name: 'blocks',
-  });
-
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    handleSave({
+      yesterday: data.yesterday.filter((task) => task.text),
+      today: data.today.filter((task) => task.text),
+      blocks: data.blocks.filter((task) => task.text),
+    });
+  };
 
   const renderActions = () => (
     <>
-      <Button size='sm' variant='plain' onClick={handleCancel}>
+      <Button
+        size='sm'
+        variant='outlined'
+        onClick={() => {
+          reset();
+          handleCancel();
+        }}
+      >
         {t('cancel')}
       </Button>
-      <Button size='sm' variant='plain' type='submit' onClick={handleSubmit(onSubmit)}>
+      <Button size='sm' variant='solid' type='submit' onClick={handleSubmit(onSubmit)}>
         {t('save')}
       </Button>
     </>
@@ -52,25 +52,19 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
       <DialogContent>
         <Stack spacing={1.5}>
           <TaskInput
-            title={'yesterday'}
+            title='yesterday'
             color={joyTheme.vars.palette.info.plainHoverBg}
             control={control}
-            fields={fieldsYesterday}
-            append={appendYesterday}
           />
           <TaskInput
-            title={'today'}
+            title='today'
             color={joyTheme.vars.palette.warning.plainHoverBg}
             control={control}
-            fields={fieldsToday}
-            append={appendToday}
           />
           <TaskInput
-            title={'blocks'}
+            title='blocks'
             color={joyTheme.vars.palette.danger.plainHoverBg}
             control={control}
-            fields={fieldsBlocks}
-            append={appendBlocks}
           />
         </Stack>
       </DialogContent>

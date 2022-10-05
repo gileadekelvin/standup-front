@@ -10,8 +10,9 @@
     "yesterday": "Yesterday",
     "today": "Today",
     "blocks": "Blocks",
+    "addTask": "Add Task",
     "create": {
-      "title": "create daily"
+      "title": "Create Daily"
     }
   }
 }
