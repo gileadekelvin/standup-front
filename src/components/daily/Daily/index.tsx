@@ -7,9 +7,9 @@ import { format } from 'date-fns';
 import { useFragment } from 'react-relay';
 import { useTranslation } from 'next-i18next';
 
-import AvatarUser from '../ui/AvatarUser';
-import TaskList from '../ui/TaskList';
-import { DailyFragment$key } from '../../../__generated__/DailyFragment.graphql';
+import AvatarUser from '../../ui/AvatarUser';
+import TaskList from '../../ui/TaskList';
+import { DailyFragment$key } from '../../../../__generated__/DailyFragment.graphql';
 import { dailyFrag } from './Daily.gql';
 
 type DailyProps = {

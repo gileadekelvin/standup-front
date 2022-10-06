@@ -1,7 +1,7 @@
 import { usePreloadedQuery } from 'react-relay';
 import { Grid } from '@mui/joy';
 
-import Daily from '../../Daily';
+import Daily from '../../daily/Daily';
 import { myTeamQuery } from '../MyTeam.gql';
 import { DailyListProps } from './Dailies';
 
@@ -9,7 +9,7 @@ const DailyList = (props: DailyListProps) => {
   const data = usePreloadedQuery(myTeamQuery, props.queryReference);
 
   return (
-    <Grid container spacing={1} sx={{ mx: 'auto', maxWidth: 600 }}>
+    <Grid container spacing={1}>
       {data.me?.team?.dailies?.edges?.map(
         (daily) =>
           daily?.node && (
