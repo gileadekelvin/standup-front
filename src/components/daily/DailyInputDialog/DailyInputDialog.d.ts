@@ -7,6 +7,7 @@ export type DailyInputDialogProps = {
   handleCancel: () => void;
   handleSave: (input: CreateDailyInput) => void;
   open: boolean;
+  loading?: boolean;
 };
 
 export type FormValues = {
