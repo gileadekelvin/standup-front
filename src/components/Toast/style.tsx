@@ -1,5 +1,5 @@
 import { ToastContainer } from 'react-toastify';
-import { styled } from '@mui/material';
+import { styled } from '@mui/joy';
 
 export const StyledToastContainer = styled(ToastContainer)(
   ({ theme }) => `

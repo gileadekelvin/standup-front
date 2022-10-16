@@ -1,13 +1,16 @@
-import { useTheme, Button } from '@mui/joy';
-import { useTranslation } from 'next-i18next';
 import {
+  useTheme,
+  Button,
+  Modal,
+  ModalDialog,
+  Typography,
+  Divider,
+  Box,
   Stack,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
   CircularProgress,
-} from '@mui/material';
+} from '@mui/joy';
+import { useMediaQuery } from '@mui/material';
+import { useTranslation } from 'next-i18next';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import TaskInput from './TaskInput';
@@ -17,6 +20,7 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
   const { open, handleClose, handleCancel, handleSave, loading } = props;
 
   const joyTheme = useTheme();
+  const isMobile = useMediaQuery(joyTheme.breakpoints.down('sm'));
   const { t } = useTranslation('common');
 
   const { control, handleSubmit, reset } = useForm<FormValues>({
@@ -54,7 +58,7 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
         type='submit'
         disabled={loading}
         onClick={handleSubmit(onSubmit)}
-        endDecorator={loading && <CircularProgress size='1rem' color='inherit' />}
+        endDecorator={loading && <CircularProgress size='sm' color='neutral' thickness={2} />}
       >
         {t('save')}
       </Button>
@@ -62,10 +66,23 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
   );
 
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth='sm' fullWidth>
-      <DialogTitle fontWeight='600'>{t('daily.create.title')}</DialogTitle>
-      <DialogContent>
-        <Stack spacing={1.5}>
+    <Modal open={open} onClose={handleClose}>
+      <ModalDialog
+        variant='outlined'
+        size='lg'
+        layout={isMobile ? 'fullscreen' : 'center'}
+        sx={{
+          minWidth: {
+            sm: '600px',
+            xl: '800px',
+          },
+        }}
+      >
+        <Typography level='h2' fontSize='lg'>
+          {t('daily.create.title')}
+        </Typography>
+        <Divider sx={{ my: 2 }} />
+        <Stack spacing={1.5} sx={{ marginBottom: 4 }}>
           <TaskInput
             title='yesterday'
             color={joyTheme.vars.palette.info.plainHoverBg}
@@ -82,9 +99,9 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
             control={control}
           />
         </Stack>
-      </DialogContent>
-      <DialogActions>{renderActions()}</DialogActions>
-    </Dialog>
+        <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}>{renderActions()}</Box>
+      </ModalDialog>
+    </Modal>
   );
 };
 

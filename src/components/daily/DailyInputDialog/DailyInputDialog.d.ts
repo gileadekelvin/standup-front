@@ -1,4 +1,4 @@
-import { ModalProps } from '@mui/material';
+import { ModalProps } from '@mui/joy';
 
 import { CreateDailyInput } from '../../../../__generated__/CreateDailyMutation.graphql';
 
