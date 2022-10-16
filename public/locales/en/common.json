@@ -2,6 +2,7 @@
   "cancel": "Cancel",
   "save": "Save",
   "add": "Add",
+  "defaultError": "Something went wrong",
   "sidebar": {
     "browse": "Browse",
     "myTeam": "My Team"
@@ -12,7 +13,9 @@
     "blocks": "Blocks",
     "addTask": "Add Task",
     "create": {
-      "title": "Create Daily"
+      "title": "Create Daily",
+      "successMessage": "Daily created successfully",
+      "errorMessage": "Daily cannot be created. Errors: {{error}}"
     }
   }
 }

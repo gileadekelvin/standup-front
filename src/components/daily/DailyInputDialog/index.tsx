@@ -1,13 +1,20 @@
 import { useTheme, Button } from '@mui/joy';
 import { useTranslation } from 'next-i18next';
-import { Stack, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import {
+  Stack,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  CircularProgress,
+} from '@mui/material';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import TaskInput from './TaskInput';
 import { DailyInputDialogProps, FormValues } from './DailyInputDialog';
 
 const DailyInputDialog = (props: DailyInputDialogProps) => {
-  const { open, handleClose, handleCancel, handleSave } = props;
+  const { open, handleClose, handleCancel, handleSave, loading } = props;
 
   const joyTheme = useTheme();
   const { t } = useTranslation('common');
@@ -33,14 +40,22 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
       <Button
         size='sm'
         variant='outlined'
+        disabled={loading}
         onClick={() => {
-          reset();
           handleCancel();
+          reset();
         }}
       >
         {t('cancel')}
       </Button>
-      <Button size='sm' variant='solid' type='submit' onClick={handleSubmit(onSubmit)}>
+      <Button
+        size='sm'
+        variant='solid'
+        type='submit'
+        disabled={loading}
+        onClick={handleSubmit(onSubmit)}
+        endIcon={loading && <CircularProgress size='1rem' color='inherit' />}
+      >
         {t('save')}
       </Button>
     </>
