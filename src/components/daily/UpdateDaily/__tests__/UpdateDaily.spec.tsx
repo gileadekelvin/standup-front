@@ -6,7 +6,7 @@ import { useLazyLoadQuery, graphql } from 'react-relay';
 
 import { withRelayProvider } from '../../../../tests/relay';
 import UpdateDaily from '..';
-import { DailyTestQuery } from '../../../../../__generated__/DailyTestQuery.graphql';
+import { UpdateDailyTestQuery } from '../../../../../__generated__/UpdateDailyTestQuery.graphql';
 
 describe('Test UpdateDaily component', () => {
   let environment: MockEnvironment;
@@ -17,9 +17,9 @@ describe('Test UpdateDaily component', () => {
 
   it('should render component and update daily', async () => {
     const UpdateDailyTest = () => {
-      const data = useLazyLoadQuery<DailyTestQuery>(
+      const data = useLazyLoadQuery<UpdateDailyTestQuery>(
         graphql`
-          query DailyTestQuery @relay_test_operation {
+          query UpdateDailyTestQuery @relay_test_operation {
             myData: node(id: "test-id") {
               ...DailyFragment
             }
