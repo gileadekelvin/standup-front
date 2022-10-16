@@ -74,6 +74,17 @@ const joyTheme = extendJoyTheme({
       fontSize: 'var(--joy-fontSize-sm)',
     },
   },
+  components: {
+    JoyCircularProgress: {
+      styleOverrides: {
+        root: ({ ownerState, theme }) => ({
+          ...(ownerState.size === 'sm' && {
+            '--CircularProgress-size': '16px'
+          }),
+        }),
+      },
+    },
+  },
 });
 
 // You can use your own `deepmerge` function.

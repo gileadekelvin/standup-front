@@ -1,21 +1,14 @@
 import { useState } from 'react';
 import IconButton from '@mui/joy/IconButton';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
-import {
-  ListDivider,
-  ListItemDecorator,
-  Menu,
-  MenuItem,
-  Typography,
-  IconButtonProps,
-} from '@mui/joy';
-import { Edit } from '@mui/icons-material';
+import { ListDivider, Menu, MenuItem, IconButtonProps } from '@mui/joy';
 
 import DeleteDaily from '../../DeleteDaily';
+import UpdateDaily from '../../UpdateDaily';
 import { ActionsProps } from './Actions';
 
 const Actions = (props: ActionsProps) => {
-  const { id } = props;
+  const { id, daily } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
@@ -45,14 +38,11 @@ const Actions = (props: ActionsProps) => {
         onClose={handleClose}
         placement='bottom-end'
       >
-        <MenuItem onClick={handleClose}>
-          <ListItemDecorator>
-            <Edit />
-          </ListItemDecorator>
-          <Typography level='body1'>Edit</Typography>
+        <MenuItem sx={{ padding: 0 }}>
+          <UpdateDaily id={id} daily={daily} />
         </MenuItem>
         <ListDivider />
-        <MenuItem color='danger'>
+        <MenuItem color='danger' sx={{ padding: 0 }}>
           <DeleteDaily id={id} />
         </MenuItem>
       </Menu>

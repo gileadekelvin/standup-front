@@ -47,6 +47,9 @@ const DeleteDaily = (props: DeleteDailyProps) => {
   return (
     <>
       <Box
+        width='100%'
+        px={1}
+        py={1}
         display='flex'
         onClick={() => {
           setOpen(true);

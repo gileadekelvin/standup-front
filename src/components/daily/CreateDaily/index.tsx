@@ -2,8 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { useMutation } from 'react-relay';
-import { ModalProps } from '@mui/material';
-import { Button } from '@mui/joy';
+import { Button, ModalProps } from '@mui/joy';
 import AddIcon from '@mui/icons-material/Add';
 
 import {
@@ -48,7 +47,7 @@ const CreateDaily = () => {
           toast.success(t('daily.create.successMessage'));
         }
       },
-      onError(error) {
+      onError(_error) {
         toast.error(t('defaultError'));
       },
     });

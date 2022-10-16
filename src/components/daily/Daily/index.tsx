@@ -32,7 +32,7 @@ const Daily = (props: DailyProps) => {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', pb: 1, gap: 1 }}>
         <AvatarUser name={daily.author.name} />
-        <Actions id={daily.id} />
+        <Actions id={daily.id} daily={props.data} />
       </Box>
       <Typography level='body1' fontWeight={'lg'} sx={{ color: 'text.secondary', mb: 1 }}>
         {format(new Date(daily.createdAt), 'yyyy-MM-dd')}
