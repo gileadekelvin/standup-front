@@ -68,7 +68,13 @@ const muiTheme = extendMuiTheme({
   },
 });
 
-const joyTheme = extendJoyTheme();
+const joyTheme = extendJoyTheme({
+  typography: {
+    body1: {
+      fontSize: 'var(--joy-fontSize-sm)',
+    },
+  },
+});
 
 // You can use your own `deepmerge` function.
 // joyTheme will deeply merge to muiTheme.

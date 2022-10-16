@@ -54,7 +54,7 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
         type='submit'
         disabled={loading}
         onClick={handleSubmit(onSubmit)}
-        endIcon={loading && <CircularProgress size='1rem' color='inherit' />}
+        endDecorator={loading && <CircularProgress size='1rem' color='inherit' />}
       >
         {t('save')}
       </Button>

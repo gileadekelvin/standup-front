@@ -58,7 +58,7 @@ const CreateDaily = () => {
     <>
       <Button
         size='sm'
-        startIcon={<AddIcon />}
+        startDecorator={<AddIcon />}
         variant='soft'
         sx={{ fontWeight: '600' }}
         onClick={handleClickOpen}

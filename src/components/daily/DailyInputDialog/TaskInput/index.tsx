@@ -19,9 +19,8 @@ const TaskInput = (props: TaskInputProps) => {
   return (
     <Stack spacing={1}>
       <Typography
-        fontSize='sm'
+        level='body1'
         fontWeight='lg'
-        textColor='text.primary'
         sx={{
           width: 'fit-content',
           backgroundColor: color,

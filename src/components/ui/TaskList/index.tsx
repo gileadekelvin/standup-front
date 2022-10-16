@@ -9,7 +9,7 @@ const TaskList = (props: TaskListProps) => {
   return (
     <Stack pb={2} spacing={1}>
       <Typography
-        fontSize='sm'
+        level='body1'
         fontWeight='lg'
         textColor='text.primary'
         sx={{
