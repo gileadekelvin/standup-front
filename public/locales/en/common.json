@@ -3,6 +3,7 @@
   "save": "Save",
   "add": "Add",
   "delete": "Delete",
+  "edit": "Edit",
   "confirmation": "Confirmation",
   "defaultError": "Something went wrong",
   "sidebar": {
@@ -18,6 +19,11 @@
       "title": "Create Daily",
       "successMessage": "Daily created successfully",
       "errorMessage": "Daily cannot be created. Errors: {{error}}"
+    },
+    "update": {
+      "title": "Update Daily",
+      "successMessage": "Daily updated successfully",
+      "errorMessage": "Daily cannot be updated. Errors: {{error}}"
     },
     "delete": {
       "confirmationMessage": "Are you sure you want to delete this daily?",

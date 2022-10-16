@@ -47,7 +47,7 @@ const CreateDaily = () => {
           toast.success(t('daily.create.successMessage'));
         }
       },
-      onError(error) {
+      onError(_error) {
         toast.error(t('defaultError'));
       },
     });

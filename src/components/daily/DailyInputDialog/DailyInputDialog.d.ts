@@ -1,23 +1,32 @@
 import { ModalProps } from '@mui/joy';
 
-import { CreateDailyInput } from '../../../../__generated__/CreateDailyMutation.graphql';
-
 export type DailyInputDialogProps = {
   handleClose: ModalProps['onClose'];
   handleCancel: () => void;
-  handleSave: (input: CreateDailyInput) => void;
+  handleSave: (input: FormValues) => void;
   open: boolean;
   loading?: boolean;
+  title?: string;
+  initialValues?: FormValues;
 };
 
 export type FormValues = {
-  yesterday: {
-    text: string;
-  }[];
-  today: {
-    text: string;
-  }[];
-  blocks: {
-    text: string;
-  }[];
+  yesterday:
+    | {
+        text: string;
+      }[]
+    | null
+    | undefined;
+  today:
+    | {
+        text: string;
+      }[]
+    | null
+    | undefined;
+  blocks:
+    | {
+        text: string;
+      }[]
+    | null
+    | undefined;
 };

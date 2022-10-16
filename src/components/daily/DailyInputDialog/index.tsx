@@ -17,14 +17,14 @@ import TaskInput from './TaskInput';
 import { DailyInputDialogProps, FormValues } from './DailyInputDialog';
 
 const DailyInputDialog = (props: DailyInputDialogProps) => {
-  const { open, handleClose, handleCancel, handleSave, loading } = props;
+  const { open, handleClose, handleCancel, handleSave, loading, title, initialValues } = props;
 
   const joyTheme = useTheme();
   const isMobile = useMediaQuery(joyTheme.breakpoints.down('sm'));
   const { t } = useTranslation('common');
 
   const { control, handleSubmit, reset } = useForm<FormValues>({
-    defaultValues: {
+    defaultValues: initialValues ?? {
       yesterday: [{ text: '' }],
       today: [{ text: '' }],
       blocks: [{ text: '' }],
@@ -33,9 +33,9 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     handleSave({
-      yesterday: data.yesterday.filter((task) => task.text),
-      today: data.today.filter((task) => task.text),
-      blocks: data.blocks.filter((task) => task.text),
+      yesterday: data.yesterday?.filter((task) => task.text),
+      today: data.today?.filter((task) => task.text),
+      blocks: data.blocks?.filter((task) => task.text),
     });
   };
 
@@ -79,7 +79,7 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
         }}
       >
         <Typography level='h2' fontSize='lg'>
-          {t('daily.create.title')}
+          {title ?? t('daily.create.title')}
         </Typography>
         <Divider sx={{ my: 2 }} />
         <Stack spacing={1.5} sx={{ marginBottom: 4 }}>
