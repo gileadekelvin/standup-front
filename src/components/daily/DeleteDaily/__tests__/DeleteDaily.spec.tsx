@@ -26,8 +26,6 @@ describe('Test DeleteDaily component', () => {
     const deleteConfirm = screen.getAllByText('delete');
     expect(deleteConfirm).toHaveLength(2);
 
-    screen.debug();
-
     await act(async () => {
       deleteConfirm[1].click();
     });
