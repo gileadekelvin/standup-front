@@ -6,13 +6,13 @@ exports[`Test AvatarUser component should render component 1`] = `
     class="JoyAvatar-root JoyAvatar-variantSoft JoyAvatar-colorNeutral JoyAvatar-sizeSm css-3fr2zd-JoyAvatar-root"
   >
     <p
-      class="JoyTypography-root JoyTypography-body1 css-khzqtd-JoyTypography-root"
+      class="JoyTypography-root JoyTypography-body1 css-1837725-JoyTypography-root"
     >
       JO
     </p>
   </div>
   <p
-    class="JoyTypography-root JoyTypography-body1 css-khzqtd-JoyTypography-root"
+    class="JoyTypography-root JoyTypography-body1 css-1837725-JoyTypography-root"
   >
     John
   </p>

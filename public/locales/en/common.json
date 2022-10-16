@@ -2,6 +2,8 @@
   "cancel": "Cancel",
   "save": "Save",
   "add": "Add",
+  "delete": "Delete",
+  "confirmation": "Confirmation",
   "defaultError": "Something went wrong",
   "sidebar": {
     "browse": "Browse",
@@ -16,6 +18,11 @@
       "title": "Create Daily",
       "successMessage": "Daily created successfully",
       "errorMessage": "Daily cannot be created. Errors: {{error}}"
+    },
+    "delete": {
+      "confirmationMessage": "Are you sure you want to delete this daily?",
+      "successMessage": "Daily deleted successfully",
+      "errorMessage": "Daily cannot be deleted. Errors: {{error}}"
     }
   }
 }

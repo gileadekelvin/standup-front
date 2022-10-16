@@ -7,11 +7,11 @@ const AvatarUser = (props: AvatarUserProps) => {
   return (
     <>
       <Avatar size='sm'>
-        <Typography fontSize='sm' fontWeight='lg'>
+        <Typography level='body1' fontWeight='lg'>
           {name.slice(0, 2).toUpperCase()}
         </Typography>
       </Avatar>
-      <Typography fontSize='sm' fontWeight='lg'>
+      <Typography level='body1' fontWeight='lg'>
         {name}
       </Typography>
     </>
