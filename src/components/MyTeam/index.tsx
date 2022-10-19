@@ -14,7 +14,7 @@ const MyTeam = () => {
   return (
     <Grid container spacing={1} direction='column' sx={{ mx: 'auto', maxWidth: 600 }}>
       <Grid xs={12} mx={0.5} mt={1}>
-        <CreateDaily />
+        {data.me?.team && <CreateDaily data={data.me.team} />}
       </Grid>
       <Grid xs={12}>
         <Suspense fallback={<LinearProgress />}>

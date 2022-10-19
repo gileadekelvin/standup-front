@@ -3,6 +3,7 @@ import { graphql } from 'react-relay';
 export const dailiesFrag = graphql`
   fragment DailiesFragment on Team @refetchable(queryName: "DailiesConnectionQuery") {
     dailies(first: $first, after: $after) @connection(key: "DailiesConnection__dailies") {
+      __id
       totalCount
       pageInfo {
         hasNextPage
