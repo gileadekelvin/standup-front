@@ -3,9 +3,13 @@ import type { NextPageWithLayout } from './_app';
 import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ReactElement } from 'react';
+import { fetchQuery } from 'react-relay';
 
 import Layout from '../src/components/Layout';
 import MyTeam from '../src/components/MyTeam';
+import { finalizeRelay, initializeRelay } from '../lib/relay';
+import { myTeamQuery } from '../src/components/MyTeam/MyTeam.gql';
+import { MyTeamQuery } from '../__generated__/MyTeamQuery.graphql';
 
 const Home: NextPageWithLayout = () => {
   return <MyTeam />;
@@ -16,11 +20,18 @@ Home.getLayout = function getLayout(page: ReactElement) {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
-  return {
+  const environment = initializeRelay();
+
+  // this will fetch the dailies in the server
+  const dailies = await fetchQuery<MyTeamQuery>(environment, myTeamQuery, {}).toPromise();
+
+  // this will hydrate the relay store with the dailies already fetched on the server
+  return finalizeRelay(environment, {
     props: {
+      data: dailies,
       ...(await serverSideTranslations(locale ?? 'en', ['common'])),
     },
-  };
+  });
 };
 
 export default Home;
