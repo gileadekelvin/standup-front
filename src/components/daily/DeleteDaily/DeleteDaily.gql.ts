@@ -5,7 +5,7 @@ export const deleteDailyMutation = graphql`
     deleteDaily(input: $input) {
       Error
       Daily {
-        id
+        id @deleteRecord
       }
     }
   }

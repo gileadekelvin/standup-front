@@ -1,7 +1,5 @@
-import { PreloadedQuery } from 'react-relay';
-
-import { MyTeamQuery } from '../../../../__generated__/MyTeamQuery.graphql';
+import { DailiesConnectionQuery$data } from '../../../../__generated__/DailiesConnectionQuery.graphql';
 
 export type DailyListProps = {
-  queryReference: PreloadedQuery<MyTeamQuery>;
+  data: DailiesConnectionQuery$data['node'];
 };

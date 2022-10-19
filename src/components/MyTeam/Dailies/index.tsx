@@ -1,16 +1,21 @@
-import { usePreloadedQuery } from 'react-relay';
-import { Grid } from '@mui/joy';
+import { usePaginationFragment } from 'react-relay';
+import { Box, Button, Grid } from '@mui/joy';
 
 import Daily from '../../daily/Daily';
-import { myTeamQuery } from '../MyTeam.gql';
 import { DailyListProps } from './Dailies';
+import { dailiesFrag } from './Dailies.gql';
+import { DailiesFragment$key } from '../../../../__generated__/DailiesFragment.graphql';
+import { DailiesConnectionQuery } from '../../../../__generated__/DailiesConnectionQuery.graphql';
 
 const DailyList = (props: DailyListProps) => {
-  const data = usePreloadedQuery(myTeamQuery, props.queryReference);
+  const { data, loadNext } = usePaginationFragment<DailiesConnectionQuery, DailiesFragment$key>(
+    dailiesFrag,
+    props.data,
+  );
 
   return (
-    <Grid container spacing={1}>
-      {data.me?.team?.dailies?.edges?.map(
+    <Grid container spacing={1} justifyContent='center'>
+      {data?.dailies?.edges?.map(
         (daily) =>
           daily?.node && (
             <Grid key={daily?.node.id} xs={12}>
@@ -18,6 +23,18 @@ const DailyList = (props: DailyListProps) => {
             </Grid>
           ),
       )}
+      <Box textAlign='center' my={2}>
+        <Button
+          size='sm'
+          variant='soft'
+          sx={{ fontWeight: '600' }}
+          onClick={() => {
+            loadNext(10);
+          }}
+        >
+          Load more
+        </Button>
+      </Box>
     </Grid>
   );
 };

@@ -1,18 +1,10 @@
 import { graphql } from 'react-relay';
 
 export const myTeamQuery = graphql`
-  query MyTeamQuery {
+  query MyTeamQuery($first: Int = 5, $after: String = null) {
     me {
       team {
-        dailies(first: 10) {
-          totalCount
-          edges {
-            node {
-              id
-              ...DailyFragment
-            }
-          }
-        }
+        ...DailiesFragment
       }
     }
   }

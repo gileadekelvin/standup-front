@@ -1,4 +1,4 @@
-import { render, screen, act, fireEvent } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { createMockEnvironment, MockPayloadGenerator, MockEnvironment } from 'relay-test-utils';
 import '@testing-library/jest-dom';
 
@@ -16,19 +16,12 @@ describe('Test MyTeam component', () => {
     const MyTeamTestWrapped = withRelayProvider(<MyTeam />, environment);
     render(MyTeamTestWrapped);
 
-    const loadButton = screen.getByRole('button');
-    expect(loadButton).toBeInTheDocument();
-
-    await act(async () => {
-      fireEvent.click(loadButton);
-    });
-
     const customResolvers = {
       Query: () => ({
         me: {
           team: {
             dailies: {
-              totalCound: 2,
+              totalCount: 2,
               edges: [
                 {
                   node: {
