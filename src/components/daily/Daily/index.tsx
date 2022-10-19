@@ -35,7 +35,7 @@ const Daily = (props: DailyProps) => {
         <Actions id={daily.id} daily={props.data} />
       </Box>
       <Typography level='body1' fontWeight={'lg'} sx={{ color: 'text.secondary', mb: 1 }}>
-        {format(new Date(daily.createdAt), 'yyyy-MM-dd')}
+        {format(new Date(daily.createdAt), 'dd MMM yyyy')}
       </Typography>
       <TaskList
         title={t('daily.yesterday')}

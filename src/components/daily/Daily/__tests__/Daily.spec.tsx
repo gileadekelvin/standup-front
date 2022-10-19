@@ -52,7 +52,7 @@ describe('Test Daily component', () => {
     const user = screen.getByText('Gileade Kelvin');
     expect(user).toBeInTheDocument();
 
-    const date = screen.getByText('2022-07-27');
+    const date = screen.getByText('27 Jul 2022');
     expect(date).toBeInTheDocument();
 
     const yesterday = screen.getByText('daily.yesterday');
