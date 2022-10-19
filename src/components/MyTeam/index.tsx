@@ -9,7 +9,13 @@ import { myTeamQuery } from './MyTeam.gql';
 import Dailies from './Dailies';
 
 const MyTeam = () => {
-  const data = useLazyLoadQuery<MyTeamQuery>(myTeamQuery, { first: 10 });
+  const data = useLazyLoadQuery<MyTeamQuery>(
+    myTeamQuery,
+    {},
+    {
+      fetchPolicy: 'store-or-network',
+    },
+  );
 
   return (
     <Grid container spacing={1} direction='column' sx={{ mx: 'auto', maxWidth: 600 }}>
