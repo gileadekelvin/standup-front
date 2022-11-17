@@ -44,6 +44,12 @@ type DailyEdge {
   node: Daily
 }
 
+"""Daily connection filters"""
+input DailyFilters {
+  RangeDate: RangeDate
+  UserId: String
+}
+
 """DateTime scalar"""
 scalar DateTime
 
@@ -92,6 +98,12 @@ type Query {
   node(id: ID!): Node
 }
 
+"""Range date input"""
+input RangeDate {
+  endDate: String
+  startDate: String
+}
+
 """Role types"""
 enum Role {
   ADMIN
@@ -133,7 +145,7 @@ type Team implements Node {
   _id: ID!
   companyId: String
   createdAt: DateTime!
-  dailies(after: String, first: Int!): DailyConnection
+  dailies(after: String, filters: DailyFilters, first: Int!): DailyConnection
   id: ID!
   name: String!
   updatedAt: DateTime!
