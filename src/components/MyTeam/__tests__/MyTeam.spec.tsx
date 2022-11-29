@@ -61,5 +61,11 @@ describe('Test MyTeam component', () => {
 
     const user2 = screen.getByText('User2');
     expect(user2).toBeInTheDocument();
+
+    const createButton = screen.getByText('daily.create.title');
+    expect(createButton).toBeInTheDocument();
+
+    const filters = screen.getByText('daily.filter.myDailies');
+    expect(filters).toBeInTheDocument();
   });
 });

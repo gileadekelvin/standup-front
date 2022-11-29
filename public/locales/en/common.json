@@ -31,7 +31,8 @@
       "errorMessage": "Daily cannot be deleted. Errors: {{error}}"
     },
     "filter": {
-      "myDailies": "My dailies only"
+      "myDailies": "My dailies only",
+      "byDate": "Filter by date"
     }
   }
 }
