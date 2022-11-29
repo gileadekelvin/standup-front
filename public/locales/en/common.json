@@ -29,6 +29,10 @@
       "confirmationMessage": "Are you sure you want to delete this daily?",
       "successMessage": "Daily deleted successfully",
       "errorMessage": "Daily cannot be deleted. Errors: {{error}}"
+    },
+    "filter": {
+      "myDailies": "My dailies only",
+      "byDate": "Filter by date"
     }
   }
 }
