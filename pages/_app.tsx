@@ -2,6 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 
+import { SessionProvider } from 'next-auth/react';
 import { appWithTranslation } from 'next-i18next';
 import { CssVarsProvider } from '@mui/joy/styles';
 import { LocalizationProvider } from '@mui/x-date-pickers';
@@ -22,7 +23,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function Root({ Component, pageProps }: AppPropsWithLayout) {
   const relayEnvironment = useRelayEnvironment(pageProps);
 
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -38,6 +39,14 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         </LocalizationProvider>
       </CssVarsProvider>
     </RelayEnvironmentProvider>
+  );
+}
+
+function MyApp(props: AppPropsWithLayout) {
+  return (
+    <SessionProvider session={props.pageProps.session}>
+      <Root {...props} />
+    </SessionProvider>
   );
 }
 
