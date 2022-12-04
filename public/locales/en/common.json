@@ -8,12 +8,13 @@
   "defaultError": "Something went wrong",
   "sidebar": {
     "browse": "Browse",
-    "myTeam": "My Team"
+    "myTeam": "My Team",
+    "settings": "Settings"
   },
   "daily": {
     "yesterday": "Yesterday",
     "today": "Today",
-    "blocks": "Blocks",
+    "blocks": "Blockers",
     "addTask": "Add Task",
     "create": {
       "title": "Create Daily",

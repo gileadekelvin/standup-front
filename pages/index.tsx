@@ -9,7 +9,6 @@ import { fetchQuery } from 'react-relay';
 
 import Layout from '../src/components/Layout';
 import MyTeam from '../src/components/MyTeam';
-import Login from '../src/components/Login';
 import { finalizeRelay, initializeRelay } from '../lib/relay';
 import { myTeamQuery } from '../src/components/MyTeam/MyTeam.gql';
 import { MyTeamQuery } from '../__generated__/MyTeamQuery.graphql';
@@ -22,7 +21,6 @@ const Home: NextPageWithLayout = () => {
         <title>My Team</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <Login />
       <MyTeam />
     </>
   );

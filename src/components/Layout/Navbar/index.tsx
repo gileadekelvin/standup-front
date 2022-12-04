@@ -62,7 +62,6 @@ const Navbar = (props: NavbarProps) => {
           <MenuIcon />
         </IconButton>
         <Image src={logo} alt='Standup Daily' height='32px' width='32px'></Image>
-
         <Typography component='h1' fontWeight='xl'>
           Standup Daily
         </Typography>
