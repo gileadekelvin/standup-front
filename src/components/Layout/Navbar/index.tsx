@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useColorScheme } from '@mui/joy/styles';
 import { Box, Typography } from '@mui/joy';
 import IconButton from '@mui/joy/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
-import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
 
 import { NavbarProps } from './Navbar';
+import logo from '../../../../public/logoIcon.svg';
 
 const ColorSchemeToggle = () => {
   const { mode, setMode } = useColorScheme();
@@ -60,9 +61,8 @@ const Navbar = (props: NavbarProps) => {
         >
           <MenuIcon />
         </IconButton>
-        <IconButton size='sm' variant='solid' sx={{ display: { xs: 'none', sm: 'inline-flex' } }}>
-          <GroupRoundedIcon />
-        </IconButton>
+        <Image src={logo} alt='Standup Daily' height='32px' width='32px'></Image>
+
         <Typography component='h1' fontWeight='xl'>
           Standup Daily
         </Typography>

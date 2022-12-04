@@ -13,6 +13,9 @@ export const authOptions: NextAuthOptions = {
   theme: {
     colorScheme: 'light',
   },
+  pages: {
+    signIn: '/auth/login',
+  },
   callbacks: {
     async signIn({ user, account }) {
       if (account?.provider === 'google' && account?.id_token) {

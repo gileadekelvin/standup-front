@@ -12,11 +12,12 @@ import { Suspense } from 'react';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 import 'react-toastify/dist/ReactToastify.min.css';
 
+import '../styles.css';
 import { useRelayEnvironment } from '../lib/relay';
 import { theme } from '../src/JoyTheme';
 import Toast from '../src/components/Toast';
 
-export type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 type AppPropsWithLayout = AppProps & {
