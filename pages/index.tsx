@@ -38,6 +38,15 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, locale 
   // this will fetch the dailies in the server
   const dailies = await fetchQuery<MyTeamQuery>(environment, myTeamQuery, {}).toPromise();
 
+  if (!dailies?.me) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/auth/login',
+      },
+    };
+  }
+
   // this will hydrate the relay store with the dailies already fetched on the server
   return finalizeRelay(environment, {
     props: {
