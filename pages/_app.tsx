@@ -2,6 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 
+import { SessionProvider } from 'next-auth/react';
 import { appWithTranslation } from 'next-i18next';
 import { CssVarsProvider } from '@mui/joy/styles';
 import { LocalizationProvider } from '@mui/x-date-pickers';
@@ -11,18 +12,19 @@ import { Suspense } from 'react';
 import { RelayEnvironmentProvider } from 'react-relay/hooks';
 import 'react-toastify/dist/ReactToastify.min.css';
 
+import '../styles.css';
 import { useRelayEnvironment } from '../lib/relay';
 import { theme } from '../src/JoyTheme';
 import Toast from '../src/components/Toast';
 
-export type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function Root({ Component, pageProps }: AppPropsWithLayout) {
   const relayEnvironment = useRelayEnvironment(pageProps);
 
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -38,6 +40,14 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         </LocalizationProvider>
       </CssVarsProvider>
     </RelayEnvironmentProvider>
+  );
+}
+
+function MyApp(props: AppPropsWithLayout) {
+  return (
+    <SessionProvider session={props.pageProps.session}>
+      <Root {...props} />
+    </SessionProvider>
   );
 }
 

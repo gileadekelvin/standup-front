@@ -1,6 +1,7 @@
 // Code based on https://github.com/vercel/next.js/blob/266b95107aa228873097770e94fd09264fa3ae72/examples/with-relay/lib/relay.jsx
 // Copyright https://github.com/jesstelford
 
+import { getSession } from 'next-auth/react';
 import { useMemo } from 'react';
 import {
   Environment,
@@ -15,37 +16,51 @@ export const RELAY_INITIAL_RECORDS_PROP = '__RELAY_INITIAL_RECORDS__';
 
 let relayEnvironment: Environment;
 
-// Define a function that fetches the results of an operation (query/mutation/etc)
-// and returns its results as a Promise
-const fetchRelay = async (operation: RequestParameters, variables: Variables) => {
-  const response = await fetch(process.env.NEXT_PUBLIC_RELAY_ENDPOINT as string, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: process.env.NEXT_PUBLIC_TOKEN as string,
-    },
-    body: JSON.stringify({
-      query: operation.text,
-      variables,
-    }),
-  });
-  return await response.json();
+const getAuthToken = async (authToken?: string | null) => {
+  if (authToken) {
+    // Returns accessToken on the server side
+    return authToken;
+  }
+  // To get accessToken on the client side
+  const session = await getSession();
+  return session?.accessToken;
 };
 
-const createEnvironment = () =>
+// Define a function that fetches the results of an operation (query/mutation/etc)
+// and returns its results as a Promise
+const genFetchRelay = (authToken?: string | null) => {
+  const fetchRelay = async (operation: RequestParameters, variables: Variables) => {
+    const token = await getAuthToken(authToken);
+    const response = await fetch(process.env.NEXT_PUBLIC_RELAY_ENDPOINT as string, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token ?? '',
+      },
+      body: JSON.stringify({
+        query: operation.text,
+        variables,
+      }),
+    });
+    return await response.json();
+  };
+  return fetchRelay;
+};
+
+const createEnvironment = (authToken?: string | null) =>
   new Environment({
     // Create a network layer from the fetch function
-    network: Network.create(fetchRelay),
+    network: Network.create(genFetchRelay(authToken)),
     store: new Store(new RecordSource()),
   });
 
 // For use in non-react contexts: getServerSideProps, getStaticProps,
 // getInitialProps, pages/api routes.
 // Should be paired with finalizeRelay() with get*Props() methods.
-export const initializeRelay = (initialRecords?: any) => {
+export const initializeRelay = (initialRecords?: any, authToken?: string | null) => {
   // Create a network layer from the fetch function
-  const environment = relayEnvironment ?? createEnvironment();
+  const environment = relayEnvironment ?? createEnvironment(authToken);
 
   // If your page has Next.js data fetching methods that use Relay, the initial records
   // will get hydrated here
