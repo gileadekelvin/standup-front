@@ -27,10 +27,9 @@ const Sidebar = () => {
         >
           <Typography
             id='nav-list-browse'
-            textColor='neutral.500'
             fontWeight={700}
             sx={{
-              fontSize: '10px',
+              fontSize: '12px',
               textTransform: 'uppercase',
               letterSpacing: '.1rem',
             }}
@@ -46,23 +45,25 @@ const Sidebar = () => {
               sx={{ padding: '8px' }}
               onClick={() => router.push('/')}
             >
-              <ListItemDecorator sx={{ color: 'inherit' }}>
+              <ListItemDecorator sx={{ color: 'text.primary' }}>
                 <FolderOpenIcon fontSize='small' />
               </ListItemDecorator>
-              <ListItemContent>{t('sidebar.myTeam')}</ListItemContent>
+              <ListItemContent sx={{ color: 'text.primary', fontWeight: 700 }}>{t('sidebar.myTeam')}</ListItemContent>
             </ListItemButton>
           </ListItem>
           <ListItem>
             <ListItemButton
               variant={router.pathname === '/settings' ? 'soft' : 'plain'}
               color='primary'
-              sx={{ padding: '8px' }}
+              sx={{ padding: '8px'}}
               onClick={() => router.push('/settings')}
             >
-              <ListItemDecorator sx={{ color: 'inherit' }}>
+              <ListItemDecorator sx={{ color: 'text.primary' }}>
                 <SettingsIcon fontSize='small' />
               </ListItemDecorator>
-              <ListItemContent>{t('sidebar.settings')}</ListItemContent>
+              <ListItemContent sx={{ color: 'text.primary', fontWeight: 700 }}>
+                {t('sidebar.settings')}
+              </ListItemContent>
             </ListItemButton>
           </ListItem>
         </List>

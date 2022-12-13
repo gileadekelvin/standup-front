@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Typography, useTheme } from '@mui/joy';
+import { Box, useTheme } from '@mui/joy';
 import Card from '@mui/joy/Card';
 import { format } from 'date-fns';
 import { useFragment } from 'react-relay';
@@ -30,13 +30,13 @@ const Daily = (props: DailyProps) => {
         '--Card-radius': (theme) => theme.vars.radius.xs,
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', pb: 1, gap: 1 }}>
-        <AvatarUser name={daily.author.name} />
+      <Box sx={{ display: 'flex', alignItems: 'center', pb: 1, gap: 1, mb: 1 }}>
+        <AvatarUser
+          name={daily.author.name}
+          date={format(new Date(daily.createdAt), 'dd MMM yyyy')}
+        />
         <Actions id={daily.id} daily={props.data} />
       </Box>
-      <Typography level='body1' fontWeight={'lg'} sx={{ color: 'text.secondary', mb: 1 }}>
-        {format(new Date(daily.createdAt), 'dd MMM yyyy')}
-      </Typography>
       <TaskList
         title={t('daily.yesterday')}
         color={joyTheme.vars.palette.info.plainHoverBg}

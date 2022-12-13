@@ -63,7 +63,7 @@ const UpdateDaily = (props: UpdateDailyProps) => {
         <ListItemDecorator>
           <EditIcon />
         </ListItemDecorator>
-        <Typography level='body1'>{t('edit')}</Typography>
+        <Typography level='body1' fontWeight={600}>{t('edit')}</Typography>
       </Box>
       {open && (
         <DailyInputDialog

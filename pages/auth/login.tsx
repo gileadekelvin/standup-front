@@ -37,6 +37,9 @@ const Login: NextPageWithLayout<{ providers: ClientSafeProvider[] }> = ({ provid
             paddingBottom: 5,
             paddingX: 7,
             justifyContent: 'center',
+            borderRadius: 0,
+            border: '4px solid #000',
+            boxShadow: '8px 8px #000'
           }}
         >
           <Box display='flex' flexDirection='column' alignItems='center'>

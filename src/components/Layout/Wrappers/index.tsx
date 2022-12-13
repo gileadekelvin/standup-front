@@ -29,7 +29,7 @@ const Header = (props: BoxProps) => (
         justifyContent: 'space-between',
         alignItems: 'center',
         gridColumn: '1 / -1',
-        borderBottom: '1px solid',
+        borderBottom: '2px solid',
         borderColor: 'divider',
         position: 'fixed',
         minWidth: 'calc(100% - 48px)',
@@ -55,7 +55,7 @@ const SideNav = (props: BoxProps) => (
         bottom: 0,
         minWidth: '240px',
         bgcolor: 'background.body',
-        borderRight: '1px solid',
+        borderRight: '2px solid',
         borderColor: 'divider',
         display: {
           xs: 'none',
@@ -74,7 +74,7 @@ const SidePane = (props: BoxProps) => (
     sx={[
       {
         bgcolor: 'background.body',
-        borderRight: '1px solid',
+        borderRight: '2px solid',
         borderColor: 'divider', 
         display: {
           xs: 'none',

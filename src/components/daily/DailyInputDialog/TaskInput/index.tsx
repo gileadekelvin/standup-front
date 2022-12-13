@@ -21,9 +21,12 @@ const TaskInput = (props: TaskInputProps) => {
       <Typography
         level='body1'
         fontWeight='lg'
+        textAlign='center'
         sx={{
-          width: 'fit-content',
+          width: '70px',
           backgroundColor: color,
+          padding: '3px',
+          border: '2px solid #000',
         }}
       >
         {t(`daily.${title}`)}
@@ -35,7 +38,15 @@ const TaskInput = (props: TaskInputProps) => {
               <Box width='100%'>
                 <Controller
                   render={({ field }) => (
-                    <Textarea {...field} sx={{ borderColor: color, fontSize: '14px' }} />
+                    <Textarea
+                      {...field}
+                      sx={{
+                        borderColor: color,
+                        borderWidth: '2px',
+                        boxShadow: `3px 3px ${color}`,
+                        fontSize: '14px',
+                      }}
+                    />
                   )}
                   name={`${title}.${index}.text`}
                   control={control}
@@ -45,6 +56,7 @@ const TaskInput = (props: TaskInputProps) => {
                 variant='plain'
                 size='sm'
                 color='neutral'
+                sx={{ ml: 1 }}
                 onClick={() => {
                   remove(index);
                 }}
@@ -62,6 +74,7 @@ const TaskInput = (props: TaskInputProps) => {
           onClick={() => {
             append({ text: '' });
           }}
+          sx={{ fontWeight: 'bolder', color: 'text.primary' }}
         >
           {t('daily.addTask')}
         </Button>

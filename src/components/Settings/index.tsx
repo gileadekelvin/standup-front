@@ -49,7 +49,11 @@ export default function Component() {
           </Card>
         )}
         <Box alignSelf='center' pt={3}>
-          <Button sx={{ maxWidth: '120px' }} color='danger' onClick={() => signOut()}>
+          <Button
+            sx={{ maxWidth: '120px', fontWeight: 700 }}
+            color='danger'
+            onClick={() => signOut()}
+          >
             Sign out
           </Button>
         </Box>

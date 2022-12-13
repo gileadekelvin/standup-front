@@ -12,9 +12,12 @@ const TaskList = (props: TaskListProps) => {
         level='body1'
         fontWeight='lg'
         textColor='text.primary'
+        textAlign='center'
         sx={{
-          width: 'fit-content',
+          width: '70px',
           backgroundColor: color,
+          padding: '3px',
+          border: '2px solid #000',
         }}
       >
         {title}
