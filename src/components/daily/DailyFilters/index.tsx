@@ -1,4 +1,5 @@
-import { Stack, Switch, Typography } from '@mui/joy';
+import { Stack, Typography } from '@mui/joy';
+import Switch from '@mui/joy/Switch';
 import { TextField } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { addDays, isValid } from 'date-fns';
@@ -35,15 +36,28 @@ const DailyFilters = (props: DailyFiltersProps) => {
         component='label'
         level='body1'
         alignItems='end'
-        endDecorator={<Switch onChange={handleAuthorFilter} size='sm' />}
+        fontWeight={600}
+        endDecorator={
+          <Switch
+            onChange={handleAuthorFilter}
+            size='sm'
+            sx={{
+              '--Switch-thumb-size': '16px',
+            }}
+          />
+        }
       >
         {t('daily.filter.myDailies')}
       </Typography>
       <DatePicker
-        label={t('daily.filter.byDate')}
+        label={
+          <Typography component='label' level='body1' fontWeight={600}>
+            {t('daily.filter.byDate')}
+          </Typography>
+        }
         inputFormat='MM-dd-yyyy'
         value={filters.RangeDate?.startDate}
-        InputProps={{ sx: { maxHeight: '30px', maxWidth: '150px' } }}
+        InputProps={{ sx: { maxHeight: '30px', maxWidth: '150px', fontWeight: 600 } }}
         onChange={(newValue) => {
           if (newValue && isValid(newValue)) {
             debounced(newValue);

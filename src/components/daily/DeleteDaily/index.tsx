@@ -58,7 +58,7 @@ const DeleteDaily = (props: DeleteDailyProps) => {
         <ListItemDecorator sx={{ color: 'inherit' }}>
           <DeleteForeverIcon />
         </ListItemDecorator>
-        <Typography level='body1' color='danger'>
+        <Typography level='body1' color='danger' fontWeight={600}>
           {t('delete')}
         </Typography>
       </Box>

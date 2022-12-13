@@ -15,7 +15,7 @@
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.10.9",
-    "@mui/joy": "^5.0.0-alpha.53",
+    "@mui/joy": "^5.0.0-alpha.57",
     "@mui/material": "^5.10.13",
     "@mui/x-date-pickers": "^5.0.7",
     "date-fns": "^2.29.3",

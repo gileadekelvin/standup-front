@@ -23,10 +23,10 @@ const Actions = (props: ActionsProps) => {
   return (
     <>
       <IconButton
-        variant='plain'
+        variant='soft'
         color='neutral'
         size='sm'
-        sx={{ ml: 'auto' }}
+        sx={{ ml: 'auto', border: '2px solid', boxShadow: '1px 1px' }}
         onClick={handleClick}
       >
         <MoreHoriz />
@@ -38,11 +38,11 @@ const Actions = (props: ActionsProps) => {
         onClose={handleClose}
         placement='bottom-end'
       >
-        <MenuItem sx={{ padding: 0 }}>
+        <MenuItem sx={{ padding: 0, border: 0, boxShadow: 'none' }}>
           <UpdateDaily id={id} daily={daily} />
         </MenuItem>
         <ListDivider />
-        <MenuItem color='danger' sx={{ padding: 0 }}>
+        <MenuItem color='danger' sx={{ padding: 0,  border: 0, boxShadow: 'none'}}>
           <DeleteDaily id={id} />
         </MenuItem>
       </Menu>

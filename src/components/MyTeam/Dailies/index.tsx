@@ -23,18 +23,20 @@ const DailyList = (props: DailyListProps) => {
             </Grid>
           ),
       )}
-      <Box textAlign='center' my={2}>
-        <Button
-          size='sm'
-          variant='soft'
-          sx={{ fontWeight: '600' }}
-          onClick={() => {
-            loadNext(10);
-          }}
-        >
-          Load more
-        </Button>
-      </Box>
+      {(data?.dailies?.totalCount ?? 0) > 0 && data?.dailies?.pageInfo.hasNextPage && (
+        <Box textAlign='center' my={2}>
+          <Button
+            size='sm'
+            variant='soft'
+            sx={{ fontWeight: '600' }}
+            onClick={() => {
+              loadNext(10);
+            }}
+          >
+            Load more
+          </Button>
+        </Box>
+      )}
     </Grid>
   );
 };

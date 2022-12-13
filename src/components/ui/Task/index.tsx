@@ -11,14 +11,16 @@ const Task = (props: TaskProps) => {
       variant='outlined'
       sx={{
         minWidth: 250,
-        '--Card-radius': (theme) => theme.vars.radius.xs,
+        '--Card-radius': 0,
         boxShadow: 'none',
-        padding: 1,
         borderLeftWidth: '4px',
+        padding: 1,
         borderColor: color,
       }}
     >
-      <Typography level='body1'>{task.text}</Typography>
+      <Typography level='body1' fontWeight={600}>
+        {task.text}
+      </Typography>
     </Card>
   );
 };
