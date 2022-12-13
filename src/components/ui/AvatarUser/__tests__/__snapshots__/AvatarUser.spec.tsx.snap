@@ -11,10 +11,17 @@ exports[`Test AvatarUser component should render component 1`] = `
       JO
     </p>
   </div>
-  <p
-    class="JoyTypography-root JoyTypography-body1 css-1837725-JoyTypography-root"
+  <div
+    class="JoyBox-root css-j7qwjs"
   >
-    John
-  </p>
+    <p
+      class="JoyTypography-root JoyTypography-body1 css-yfw4hu-JoyTypography-root"
+    >
+      John
+    </p>
+    <span
+      class="JoyTypography-root JoyTypography-body3 css-3yimt6-JoyTypography-root"
+    />
+  </div>
 </div>
 `;
