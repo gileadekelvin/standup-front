@@ -24,8 +24,8 @@ const DailyFilters = (props: DailyFiltersProps) => {
     setFilters({
       ...filters,
       RangeDate: {
-        startDate: new Date(value),
-        endDate: addDays(new Date(value), 1),
+        startDate: value ? new Date(value) : null,
+        endDate: value ? addDays(new Date(value), 1) : null,
       },
     });
   }, 1000);
@@ -59,7 +59,7 @@ const DailyFilters = (props: DailyFiltersProps) => {
         value={filters.RangeDate?.startDate}
         InputProps={{ sx: { maxHeight: '30px', maxWidth: '150px', fontWeight: 600 } }}
         onChange={(newValue) => {
-          if (newValue && isValid(newValue)) {
+          if ((newValue && isValid(newValue)) || (!newValue && filters.RangeDate)) {
             debounced(newValue);
           }
         }}
