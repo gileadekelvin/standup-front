@@ -85,7 +85,7 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
           {title ?? t('daily.create.title')}
         </Typography>
         <Divider sx={{ my: 2, mx: 0, blockSize: '2px', boxShadow: 'none' }} />
-        <Box overflow='auto' maxHeight='70vh' px={2}>
+        <Box overflow='auto' maxHeight={{ xs: '90vh', md: '70vh' }} px={2}>
           <Stack spacing={1.5} sx={{ marginBottom: 4 }}>
             <TaskInput
               title='yesterday'

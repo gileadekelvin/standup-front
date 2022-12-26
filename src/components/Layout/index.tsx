@@ -16,7 +16,7 @@ const DefaultLayout: React.FC<PropsWithChildren> = ({ children }) => {
       )}
       <Layout.Root
         sx={{
-          minHeight: 'calc(100vh - 72px)',
+          minHeight: 'calc(100vh - 64px)',
           ...(drawerOpen && {
             height: '100vh',
             overflow: 'hidden',
