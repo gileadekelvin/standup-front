@@ -19,7 +19,7 @@ const DailyList = (props: DailyListProps) => {
         (daily) =>
           daily?.node && (
             <Grid key={daily?.node.id} xs={12}>
-              <Daily data={daily?.node} />
+              <Daily data={daily?.node} userId={props.userId} />
             </Grid>
           ),
       )}

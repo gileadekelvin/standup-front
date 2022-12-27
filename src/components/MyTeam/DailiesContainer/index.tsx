@@ -42,7 +42,7 @@ const DailiesContainer = (props: DailiesContainerProps) => {
             </Stack>
           </Grid>
         )}
-        <Grid xs={12}>{data.me?.team && <Dailies data={data.me.team} />}</Grid>
+        <Grid xs={12}>{data.me?.team && <Dailies data={data.me.team} userId={data.me._id} />}</Grid>
       </Suspense>
     </Box>
   );

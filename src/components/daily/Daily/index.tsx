@@ -13,6 +13,7 @@ import { dailyFrag } from './Daily.gql';
 
 type DailyProps = {
   data: DailyFragment$key;
+  userId: string;
 };
 
 const Daily = (props: DailyProps) => {
@@ -35,7 +36,7 @@ const Daily = (props: DailyProps) => {
           name={daily.author.name}
           date={format(new Date(daily.createdAt), 'dd MMM yyyy')}
         />
-        <Actions id={daily.id} daily={props.data} />
+        {props.userId === daily.author.userId && <Actions id={daily.id} daily={props.data} />}
       </Box>
       <TaskList
         title={t('daily.yesterday')}

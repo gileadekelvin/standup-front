@@ -2,4 +2,5 @@ import { DailiesConnectionQuery$data } from '../../../../__generated__/DailiesCo
 
 export type DailyListProps = {
   data: DailiesConnectionQuery$data['node'];
+  userId: string;
 };

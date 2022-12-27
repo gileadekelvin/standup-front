@@ -26,7 +26,7 @@ describe('Test Daily component', () => {
         `,
         {},
       );
-      return data.myData && <Daily data={data.myData} />;
+      return data.myData && <Daily data={data.myData} userId='test' />;
     };
 
     const DailyTestWrapped = withRelayProvider(<DailyTest />, environment);
@@ -35,7 +35,7 @@ describe('Test Daily component', () => {
     const customResolvers = {
       Daily: () => ({
         id: 'id-mock',
-        author: { name: 'Gileade Kelvin' },
+        author: { name: 'Gileade Kelvin', userId: 'test' },
         yesterday: [{ text: 'text-1' }],
         today: [{ text: 'text-2' }],
         blocks: [{ text: 'text-3' }, { text: 'text-4' }],

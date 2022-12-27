@@ -5,6 +5,7 @@ export const dailyFrag = graphql`
     id
     author {
       name
+      userId
     }
     yesterday {
       text
