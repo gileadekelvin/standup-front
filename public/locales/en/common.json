@@ -35,5 +35,23 @@
       "myDailies": "My dailies only",
       "byDate": "Filter by date"
     }
+  },
+  "settings": {
+    "you": "You",
+    "invite": {
+      "title": "Invite Members",
+      "subtitle": "Generate an invite link to share with members of your team.",
+      "action": "Generate link",
+      "error": "Unable to generate invite link. Only admins can invite members.",
+      "invalid": "Invalid Invite! Please get a valid invite to join a team.",
+      "accept": {
+        "title": "Invitation",
+        "text": "You have been invited to join a new team!",
+        "warning": "This action cannot be undone. Will you be moved to another team and lose access to your current team.",
+        "action": "Accept",
+        "errorMessage": "Invite cannot be accepted. Errors: {{error}}",
+        "successMessage": "Invite accepted successfully"
+      }
+    }
   }
 }

@@ -1,3 +1,14 @@
+"""Change Team input field"""
+input AcceptInviteInput {
+  inviteLink: String!
+}
+
+"""Change Team payload"""
+type AcceptInvitePayload {
+  Error: [String!]
+  User: User
+}
+
 """Author of daily register"""
 type Author {
   name: String!
@@ -64,6 +75,12 @@ type DeleteDailyPayload {
   Error: [String!]
 }
 
+"""Invite Info"""
+type InviteInfo {
+  TeamName: String
+  UserInvitor: String
+}
+
 """Login response"""
 type LoginPayload {
   Error: [String!]
@@ -72,6 +89,7 @@ type LoginPayload {
 
 """Mutation type"""
 type Mutation {
+  acceptInvite(input: AcceptInviteInput!): AcceptInvitePayload
   createDaily(input: CreateDailyInput!): CreateDailyPayload
   deleteDaily(input: DeleteDailyInput!): DeleteDailyPayload
   login(token: String!): LoginPayload
@@ -94,6 +112,8 @@ type PageInfo {
 
 """Query type"""
 type Query {
+  getInvite: String
+  getInviteInfo(inviteLink: String!): InviteInfo
   me: User
   node(id: ID!): Node
 }
@@ -106,14 +126,14 @@ input RangeDate {
 
 """Role types"""
 enum Role {
-  ADMIN
-  MEMBER
+  admin
+  member
 }
 
 """Role level types"""
 enum RoleLevel {
-  ORGANIZATION
-  TEAM
+  organization
+  team
 }
 
 """Task from a daily"""
