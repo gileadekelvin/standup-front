@@ -9,6 +9,9 @@ export const settingsQuery = graphql`
       team {
         name
       }
+      role {
+        name
+      }
     }
   }
 `;
