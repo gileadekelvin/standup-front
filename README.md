@@ -3,7 +3,6 @@
 This is a standup meeting application.
 
 We use:
-
 - Next.js
 - Relay
 - Material UI
