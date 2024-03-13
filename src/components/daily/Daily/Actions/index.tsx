@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import IconButton from '@mui/joy/IconButton';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
-import { ListDivider, Menu, MenuItem, IconButtonProps } from '@mui/joy';
+import { Menu, MenuItem, IconButtonProps } from '@mui/joy';
 
 import DeleteDaily from '../../DeleteDaily';
 import UpdateDaily from '../../UpdateDaily';
@@ -26,7 +26,7 @@ const Actions = (props: ActionsProps) => {
         variant='soft'
         color='neutral'
         size='sm'
-        sx={{ ml: 'auto', border: '2px solid', boxShadow: '1px 1px' }}
+        sx={{ ml: 'auto' }}
         onClick={handleClick}
       >
         <MoreHoriz />
@@ -38,11 +38,10 @@ const Actions = (props: ActionsProps) => {
         onClose={handleClose}
         placement='bottom-end'
       >
-        <MenuItem sx={{ padding: 0, border: 0, boxShadow: 'none' }}>
+        <MenuItem>
           <UpdateDaily id={id} daily={daily} />
         </MenuItem>
-        <ListDivider />
-        <MenuItem color='danger' sx={{ padding: 0,  border: 0, boxShadow: 'none'}}>
+        <MenuItem color='danger'>
           <DeleteDaily id={id} />
         </MenuItem>
       </Menu>

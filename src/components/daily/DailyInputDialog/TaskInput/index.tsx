@@ -21,12 +21,8 @@ const TaskInput = (props: TaskInputProps) => {
       <Typography
         level='body1'
         fontWeight='lg'
-        textAlign='center'
         sx={{
           width: '70px',
-          backgroundColor: color,
-          padding: '3px',
-          border: '2px solid #000',
         }}
       >
         {t(`daily.${title}`)}
@@ -41,9 +37,6 @@ const TaskInput = (props: TaskInputProps) => {
                     <Textarea
                       {...field}
                       sx={{
-                        borderColor: color,
-                        borderWidth: '2px',
-                        boxShadow: `3px 3px ${color}`,
                         fontSize: '14px',
                       }}
                     />
@@ -70,7 +63,7 @@ const TaskInput = (props: TaskInputProps) => {
       <Box textAlign='center'>
         <Button
           size='sm'
-          variant='plain'
+          variant='soft'
           onClick={() => {
             append({ text: '' });
           }}

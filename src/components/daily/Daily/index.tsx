@@ -40,17 +40,17 @@ const Daily = (props: DailyProps) => {
       </Box>
       <TaskList
         title={t('daily.yesterday')}
-        color={joyTheme.vars.palette.info.plainHoverBg}
+        color={joyTheme.vars.palette.neutral.plainHoverBg}
         tasks={daily.yesterday}
       />
       <TaskList
         title={t('daily.today')}
-        color={joyTheme.vars.palette.warning.plainHoverBg}
+        color={joyTheme.vars.palette.neutral.plainHoverBg}
         tasks={daily.today}
       />
       <TaskList
         title={t('daily.blocks')}
-        color={joyTheme.vars.palette.danger.plainHoverBg}
+        color={joyTheme.vars.palette.neutral.plainHoverBg}
         tasks={daily.blocks}
       />
     </Card>
