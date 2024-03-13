@@ -4,7 +4,6 @@ import {
   Modal,
   ModalDialog,
   Typography,
-  Divider,
   Box,
   Stack,
   CircularProgress,
@@ -81,25 +80,24 @@ const DailyInputDialog = (props: DailyInputDialogProps) => {
           },
         }}
       >
-        <Typography level='h2' fontSize='lg' px={2}>
+        <Typography level='h2' fontSize='lg' px={2} pb={3}>
           {title ?? t('daily.create.title')}
         </Typography>
-        <Divider sx={{ my: 2, mx: 0, blockSize: '2px', boxShadow: 'none' }} />
         <Box overflow='auto' maxHeight={{ xs: '90vh', md: '70vh' }} px={2}>
           <Stack spacing={1.5} sx={{ marginBottom: 4 }}>
             <TaskInput
               title='yesterday'
-              color={joyTheme.vars.palette.info.plainHoverBg}
+              color={joyTheme.vars.palette.neutral.plainHoverBg}
               control={control}
             />
             <TaskInput
               title='today'
-              color={joyTheme.vars.palette.warning.plainHoverBg}
+              color={joyTheme.vars.palette.neutral.plainHoverBg}
               control={control}
             />
             <TaskInput
               title='blocks'
-              color={joyTheme.vars.palette.danger.plainHoverBg}
+              color={joyTheme.vars.palette.neutral.plainHoverBg}
               control={control}
             />
           </Stack>

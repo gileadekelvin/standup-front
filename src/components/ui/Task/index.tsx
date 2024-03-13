@@ -18,7 +18,7 @@ const Task = (props: TaskProps) => {
         borderColor: color,
       }}
     >
-      <Typography level='body1' fontWeight={600}>
+      <Typography level='body1'>
         {task.text}
       </Typography>
     </Card>

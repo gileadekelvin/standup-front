@@ -79,84 +79,12 @@ const joyTheme = extendJoyTheme({
       palette: {
         divider: '#000',
         background: {
-          body: '#F4F6F6',
+          body: '#fff',
         },
         primary: {
           softBg: '#AEDAFA',
           softColor: '#000',
         },
-      },
-    },
-  },
-  components: {
-    JoyCircularProgress: {
-      styleOverrides: {
-        root: ({ ownerState, theme }) => ({
-          ...(ownerState.size === 'sm' && {
-            '--CircularProgress-size': '16px',
-          }),
-        }),
-      },
-    },
-    JoyButton: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          borderRadius: 0,
-          border: '2px solid #000',
-          boxShadow: '2px 2px #000',
-          ':focus-visible': {
-            outline: 'none',
-          },
-        }),
-      },
-    },
-    JoyCard: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          border: '2px solid #000',
-        }),
-      },
-    },
-    JoyMenu: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          borderRadius: 0,
-          border: '2px solid #000',
-          boxShadow: '1px 1px #000',
-        }),
-      },
-    },
-    JoyListDivider: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          backgroundColor: '#000',
-          blockSize: '2px',
-        }),
-      },
-    },
-    JoyAvatar: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          border: '2px solid #000',
-          boxShadow: '1px 1px #000',
-        }),
-      },
-    },
-    JoyListItemButton: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          border: '2px solid #000',
-          boxShadow: '2px 2px #000',
-          marginBottom: '2px',
-        }),
-      },
-    },
-    JoyModalDialog: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          border: '2px solid #000',
-          boxShadow: '4px 4px #000',
-        }),
       },
     },
   },

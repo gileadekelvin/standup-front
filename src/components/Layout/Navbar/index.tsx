@@ -28,7 +28,6 @@ const ColorSchemeToggle = () => {
       size='sm'
       variant='outlined'
       color='primary'
-      sx={{ border: '2px solid #000', boxShadow: '2px 2px #000' }}
       onClick={() => {
         if (mode === 'light') {
           setMode('dark');
